@@ -16,11 +16,9 @@ class Problem{
 		int initial_state[3][3];
 		int goal_state[3][3];
 
-		int operators[4] = {1,2,3,4} //operators are move up, down, left, right respectiely
+		int operators[4];//operators are move up, down, left, right respectiely
 	public:
-		Problem(){
-			srand(time(NULL)); //seed random for no repetition
-			vector<int> visited; //used for no repetition in initial state
+		Problem(int arr[]){
 
 			int count = 1;
 			for (int i = 0; i < 3; i++){ 
@@ -29,14 +27,29 @@ class Problem{
 					count++; 
         			}			 
     			}
-
-
+			goal_state[2][2] = 0;
+		
+			int num = 0;
 			for (int i = 0; i < 3; i++){ 
         			for (int j = 0; j < 3; j++){
-					initial_state[i][j]  
+					initial_state[i][j] = arr[num];
+					num++;  
         			} 
-    			}  
+    			}
 
+			for(int i = 0; i < 4; i++){
+				operators[i] = i+1;
+			}  
+
+		}
+
+		void print_initial(){
+			for (int i = 0; i < 3; i++){
+                                for (int j = 0; j < 3; j++){
+                                        cout << initial_state[i][j] << " ";
+                                }
+				cout << endl;
+                        }
 		}
 
 
