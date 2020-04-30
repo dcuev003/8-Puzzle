@@ -35,7 +35,13 @@ int main(){
 		
 		cout << "Here is your puzzle" << endl;
 		p->print_initial();
+
 	}
+	int alg;
+	cout << "Enter 1,2, or 3 for your choice of algorithm: " << endl;
+	cout << "1 for Uniform Cost Search" << endl;
+	cout << "2 for A* with Misplaced Tile Heuristic" << endl;
+	cout << "3 for A* with Euclidean Distance Heuristic" << endl;
 
 
 	return 0;
