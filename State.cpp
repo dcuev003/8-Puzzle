@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <math.h>
+#include <vector>
 
 using namespace std;
 
@@ -99,7 +100,23 @@ class State{
 		f_n = g_n + h_n;	
 				 
 	}
-		
+	
+	
+	bool checkGoal(){
+		int goal[] = {1,2,3,4,5,6,7,8,0};
+
+		int num = 0;
+		for(int i = 0; i < 3; i++){ 
+        		for (int j = 0; j < 3; j++){
+				if(current[i][j] != goal[num]){
+					return false;
+				}
+				num++;  
+        		}	 
+    		}
+		return true;
+	}
+
 	void checkMoves(){
 		int i2;
 		int j2;
@@ -131,8 +148,92 @@ class State{
 			op4 = false;
 		}
 	}
-	
+
+	State* swap(int x, int y, int move){
+		int temp[3][3];
+		int arr[9];
+		int hold;
+
+		for(int i = 0; i < 3; i++){ 
+        		for (int j = 0; j < 3; j++){
+				temp[i][j] = current[i][i];  
+        		} 
+    		}
+
+		if(move == 1){
+			hold = temp[x-1][y];
+			temp[x-1][y] = 0;
+			temp[x][y] = hold;
+		}
+		else if(move == 2){
+                        hold = temp[x+1][y];
+                        temp[x+1][y] = 0;
+                        temp[x][y] = hold;
+                }
+		else if(move == 3){
+                        hold = temp[x][y-1];
+                        temp[x][y-1] = 0;
+                        temp[x][y] = hold;
+                }
+		else{
+                        hold = temp[x][y+1];
+                        temp[x][y+1] = 0;
+                        temp[x][y] = hold;
+                }
+
+		int num = 0; 
+		for(int i = 0; i < 3; i++){ 
+        		for (int j = 0; j < 3; j++){
+				arr[num] = temp[i][j];
+				num++;  
+        		} 
+    		}	
 		
+		State *n = new State(arr);
+
+		return n;			 	
+	}
+	
+	vector<State> expand(){
+		vector<State> v;
+		int x,y; //location of blank
+		bool end;
+		for(int i = 0; i < 3; i++){ 
+        		for (int j = 0; j < 3; j++){
+				if(current[i][j] == 0){
+					end = true;
+                                        x = i;
+                                        y = j;
+                                        break;
+				}
+        		}
+			if(end){break;}
+	 	}
+
+		checkMoves();
+		if(op1){
+			State* a = swap(x,y,1);
+			a->g_n = g_n + 1;
+			v.push_back(*a);
+		}
+		if(op2){
+			State* b = swap(x,y,2);
+			b->g_n = g_n + 1;
+			v.push_back(*b);
+		}
+		if(op3){
+			State* c = swap(x,y,3);
+			c->g_n = g_n + 1;
+			v.push_back(*c);
+		}
+		if(op4){
+			State* d = swap(x,y,4);
+			d->g_n = g_n +1;
+			v.push_back(*d);
+		}
+
+		return v;
+	}		
 
 	void print(){
 		for(int i = 0; i < 3; i++){

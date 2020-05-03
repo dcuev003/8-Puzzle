@@ -39,14 +39,24 @@ class Problem{
 		int solve(int search){
 			initial_state->calcF_n(search);
 			frontier.push(*initial_state);
-			
+			State *temp;
+			vector<State> 
+
+			vector<State> leaves;
 			while(!frontier.empty()){
-				frontier.top().expand();						
+				temp = new State(frontier.top());
+				temp->calcF_n(search);
+				frontier.pop();
+				if(temp->checkGoal()){
+					cout << "GOAL!!!" << endl;
+					return 1;
+				}
+				explored.push_back(*temp);										
 	
 
 
 			}
-		
+			cout << "FAILURE" << endl;
 			return -1;
 			
 		}			
