@@ -18,7 +18,7 @@ class Problem{
 		State *goal_state;
 		vector<State*> explored;
 		
-		priority_queue <State*> frontier;
+		priority_queue <State*,vector<State*>, > frontier;
 		
 		int operators[4];//operators are move up, down, left, right respectiely
 
