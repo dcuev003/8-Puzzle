@@ -140,6 +140,8 @@ class State{
                 }	
 	}
 
+	bool operator<(
+
 
 
 };
