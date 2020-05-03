@@ -8,7 +8,7 @@
 #include <time.h>
 #include <vector>
 #include "State.cpp"
-
+#include <queue>
 using namespace std;
 
 class Problem{
@@ -17,7 +17,9 @@ class Problem{
 		State *initial_state;
 		State *goal_state;
 		vector<State*> explored;
-		priority_queue<State*> frontier;
+		
+		priority_queue <State*> frontier;
+		
 		int operators[4];//operators are move up, down, left, right respectiely
 
 		Problem(int arr[]){
@@ -34,11 +36,12 @@ class Problem{
 		}
 
 
-		int solve(){
+		int solve(int search){
+			initial_state->calcF_n();
 			frontier.push(initial_state);
-			State* cur;
+			
 			while(!frontier.empty()){
-				cur = frontier.pop();			
+								
 	
 
 
@@ -46,7 +49,7 @@ class Problem{
 		
 			return -1;
 			
-			
+		}			
 			
 
 

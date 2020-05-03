@@ -12,14 +12,15 @@ class State{
 	int current[3][3];
 	int g_n;
 	int h_n;
-	
+	int f_n;
+		
 	bool op1;
 	bool op2;
 	bool op3;
 	bool op4;
 	
 	State(int arr[]){
-
+		
 		g_n = 0;
 		h_n = 0;
 		op1 = true;
@@ -37,7 +38,7 @@ class State{
     		}
 	}
 
-	
+	void calcF_n(		
 	void checkMoves(){
 		int i2;
 		int j2;
