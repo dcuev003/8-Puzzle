@@ -10,9 +10,9 @@ class State{
 	public:
 
 	int current[3][3];
-	int g_n;
-	int h_n;
-	int f_n;
+	double g_n;
+	double h_n;
+	double f_n;
 		
 	bool op1;
 	bool op2;
@@ -37,8 +37,29 @@ class State{
         		} 
     		}
 	}
-
-	void calcF_n(		
+		
+		
+	void calcF_n(int search){
+		int goal[] = {1,2,3,4,5,6,7,8,0};
+		if(search == 1){
+			h_n = 0;
+		}
+		if(search == 2){
+			int num = 0;
+			for(int i = 0; i < 3; i++){ 
+        			for (int j = 0; j < 3; j++){
+					if(current[i][j] != goal[num]){
+						h_n++;
+					}
+					num++;  
+        			}	 
+    			}
+		}
+		if(search == 3){
+			
+				 
+	}
+		
 	void checkMoves(){
 		int i2;
 		int j2;
