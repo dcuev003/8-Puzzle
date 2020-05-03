@@ -5,13 +5,7 @@
 
 using namespace std;
 
-//main search algorithm
-void search(int s){
-        cout << "algorithm choice: " << s << endl;
-}
-
-
-//drier class
+//driver class
 int main(){
 
 	
@@ -59,7 +53,7 @@ int main(){
 
 	cin >> alg;
 
-	search(alg);
+	cout << alg << endl;
 
 
 	return 0;

@@ -51,8 +51,11 @@ class State{
 	}
 		
 	void calcF_n(int search){
+
 		int goal[] = {1,2,3,4,5,6,7,8,0};
-		int eucl[3][3] = {{1,2,3}{4,5,6}{7,8,0}};
+
+		int eucl[3][3] = {{1,2,3},{4,5,6},{7,8,0}};
+
 		if(search == 1){
 			h_n = 0;
 		}
@@ -140,9 +143,13 @@ class State{
                 }	
 	}
 
-	bool operator<(
+	friend bool operator<(const State& l, const State& r){
+                return l.f_n < r.f_n;
+	}
 
 
 
 };
+
+
 #endif
