@@ -13,30 +13,19 @@ using namespace std;
 
 class Problem{
 
-	private:
-		State *initial_state;
-		State * goal_state;
-
-		int operators[4];//operators are move up, down, left, right respectiely
 	public:
-		Problem(int arr[]){
+		State *initial_state;
+		State *goal_state;
+		vector<State*> explored;
+		priority_queue<State*> frontier;
+		int operators[4];//operators are move up, down, left, right respectiely
 
-			int count = 1;
-		`	for (int i = 0; i < 3; i++){ 
-        			for (int j = 0; j < 3; j++){ 
-            				goal_state[i][j] = count;
-					count++; 
-        			}			 
-    			}
-			goal_state[2][2] = 0;
-		
-			int num = 0;
-			for (int i = 0; i < 3; i++){ 
-        			for (int j = 0; j < 3; j++){
-					initial_state[i][j] = arr[num];
-					num++;  
-        			} 
-    			}
+		Problem(int arr[]){
+			int goal[] = {1,2,3,4,5,6,7,8,0};
+
+			initial_state = new State(arr);
+			
+			goal_state = new State(goal);			
 
 			for(int i = 0; i < 4; i++){
 				operators[i] = i+1;
@@ -44,25 +33,21 @@ class Problem{
 
 		}
 
-		void print_initial(){
-			for (int i = 0; i < 3; i++){
-                                for (int j = 0; j < 3; j++){
-                                        cout << initial_state[i][j] << " ";
-                                }
-				cout << endl;
-                        }
-		}
 
-		void print_goal(){
-                        for (int i = 0; i < 3; i++){
-                                for (int j = 0; j < 3; j++){
-                                        cout << goal_state[i][j] << " ";
-                                }
-                                cout << endl;
-                        }
-                }
+		int solve(){
+			frontier.push(initial_state);
+			State* cur;
+			while(!frontier.empty()){
+				cur = frontier.pop();			
+	
 
 
+			}
+		
+			return -1;
+			
+			
+			
 
 
 };

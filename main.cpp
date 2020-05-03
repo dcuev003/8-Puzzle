@@ -25,7 +25,8 @@ int main(){
 	if(choice == 1){
 		p = new Problem(puzzle);
 		cout << "Here is your puzzle" << endl;
-		p->print_initial();
+		p->initial_state->print();
+		
 	}
 	
 	else if(choice == 2){
@@ -43,12 +44,12 @@ int main(){
 		
 		cout << "Here is your puzzle" << endl;
 		cout << endl << endl;
-		p->print_initial();
+		p->initial_state->print();
 
 	}
 
 	cout << "This is the goal state" << endl;
-        p->print_goal();
+        p->goal_state->print();
 		
 	int alg;
 	cout << "Enter 1,2, or 3 for your choice of algorithm: " << endl;
