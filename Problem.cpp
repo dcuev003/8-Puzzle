@@ -7,21 +7,22 @@
 #include <cstdlib>
 #include <time.h>
 #include <vector>
+#include "State.cpp"
 
 using namespace std;
 
 class Problem{
 
 	private:
-		int initial_state[3][3];
-		int goal_state[3][3];
+		State *initial_state;
+		State * goal_state;
 
 		int operators[4];//operators are move up, down, left, right respectiely
 	public:
 		Problem(int arr[]){
 
 			int count = 1;
-			for (int i = 0; i < 3; i++){ 
+		`	for (int i = 0; i < 3; i++){ 
         			for (int j = 0; j < 3; j++){ 
             				goal_state[i][j] = count;
 					count++; 
@@ -51,6 +52,16 @@ class Problem{
 				cout << endl;
                         }
 		}
+
+		void print_goal(){
+                        for (int i = 0; i < 3; i++){
+                                for (int j = 0; j < 3; j++){
+                                        cout << goal_state[i][j] << " ";
+                                }
+                                cout << endl;
+                        }
+                }
+
 
 
 

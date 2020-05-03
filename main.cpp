@@ -1,9 +1,17 @@
 #include <iostream>
 #include <cstdlib>
 #include "Problem.cpp"
+#include <queue>
 
 using namespace std;
 
+//main search algorithm
+void search(int s){
+        cout << "algorithm choice: " << s << endl;
+}
+
+
+//drier class
 int main(){
 
 	
@@ -13,9 +21,9 @@ int main(){
 	cout << "Welcome to 861225171 8 puzzle solver." << endl << "Type 1 to use a default puzzle, or 2 to enter your own puzzle" << endl << endl;
 
 	cin >> choice;
-
+	Problem *p;
 	if(choice == 1){
-		Problem *p = new Problem(puzzle);
+		p = new Problem(puzzle);
 		cout << "Here is your puzzle" << endl;
 		p->print_initial();
 	}
@@ -31,19 +39,33 @@ int main(){
 			puzzle[i] = entry;
 		}
 
-		Problem *p = new Problem(puzzle);
+		p = new Problem(puzzle);
 		
 		cout << "Here is your puzzle" << endl;
+		cout << endl << endl;
 		p->print_initial();
 
 	}
+
+	cout << "This is the goal state" << endl;
+        p->print_goal();
+		
 	int alg;
 	cout << "Enter 1,2, or 3 for your choice of algorithm: " << endl;
 	cout << "1 for Uniform Cost Search" << endl;
 	cout << "2 for A* with Misplaced Tile Heuristic" << endl;
 	cout << "3 for A* with Euclidean Distance Heuristic" << endl;
 
+	cin >> alg;
+
+	search(alg);
+
 
 	return 0;
 
 }
+
+
+
+
+
