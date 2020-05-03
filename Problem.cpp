@@ -14,11 +14,11 @@ using namespace std;
 class Problem{
 
 	public:
-		State *initial_state;
-		State *goal_state;
-		vector<State*> explored;
+		State* initial_state;
+		State* goal_state;
+		vector<State> explored;
 		
-		priority_queue <State*, vector<State*>, less<State*> > frontier;
+		priority_queue <State, vector<State>, greater<State> > frontier;
 		
 		int operators[4];//operators are move up, down, left, right respectiely
 
@@ -38,10 +38,10 @@ class Problem{
 
 		int solve(int search){
 			initial_state->calcF_n(search);
-			frontier.push(initial_state);
+			frontier.push(*initial_state);
 			
 			while(!frontier.empty()){
-								
+				frontier.top().expand();						
 	
 
 

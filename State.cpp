@@ -143,13 +143,13 @@ class State{
                 }	
 	}
 
-	friend bool operator<(const State& l, const State& r){
-                return l.f_n < r.f_n;
+	friend bool operator>(const State& l, const State& r){
+                return l.f_n > r.f_n;
 	}
 
 
-
 };
+
 
 
 #endif
