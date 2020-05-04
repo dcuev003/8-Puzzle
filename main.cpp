@@ -82,7 +82,10 @@ int main(){
 	cin >> alg;
 
 	cout << alg << endl;
-
+	
+	if(p->solve(alg) == -1){
+		cout << "cool" << endl;
+	}
 
 	return 0;
 

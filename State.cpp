@@ -21,6 +21,7 @@ class State{
 	bool op3;
 	bool op4;
 	
+	//default constructor
 	State(int arr[]){
 		
 		g_n = 0;
@@ -39,7 +40,49 @@ class State{
         		} 
     		}
 	}
-		
+	//copy constructor
+	State(const State &s){
+		for(int i = 0; i < 3; i++){
+                	for (int j = 0; j < 3; j++){
+                        	this->current[i][j] = s.current[i][j];
+
+                        }
+                }
+
+                this->g_n = s.g_n;
+                this->h_n = s.h_n;
+                this->f_n = s.f_n;
+
+                this->op1 = s.op1;
+                this->op2 = s.op2;
+                this->op3 = s.op3;
+                this->op4 = s.op4;
+	}
+
+
+
+	//overload assignment operator
+	State& operator=(const State &s){
+		if(this != &s){
+			for(int i = 0; i < 3; i++){ 
+        			for (int j = 0; j < 3; j++){
+					current[i][j] = s.current[i][j];
+					  
+        			} 
+    			}
+
+        		this->g_n = s.g_n;
+        		this->h_n = s.h_n;
+        		this->f_n = s.f_n;
+
+        		this->op1 = s.op1;
+        		this->op2 = s.op2;
+        		this->op3 = s.op3;
+        		this->op4 = s.op4;
+		}
+
+		return *this;
+	}
 	
 	double euclideanDistance(double v1, double v2, double v3, double v4){
 		double f = v3 - v1;
@@ -149,7 +192,7 @@ class State{
 		}
 	}
 
-	State* swap(int x, int y, int move){
+	State swap(int x, int y, int move){
 		int temp[3][3];
 		int arr[9];
 		int hold;
@@ -189,7 +232,7 @@ class State{
         		} 
     		}	
 		
-		State *n = new State(arr);
+		State n(arr);
 
 		return n;			 	
 	}
@@ -210,26 +253,26 @@ class State{
 			if(end){break;}
 	 	}
 
-		checkMoves();
+		this->checkMoves();
 		if(op1){
-			State* a = swap(x,y,1);
-			a->g_n = g_n + 1;
-			v.push_back(*a);
+			State a = swap(x,y,1);
+			a.g_n = this->g_n + 1;
+			v.push_back(a);
 		}
 		if(op2){
-			State* b = swap(x,y,2);
-			b->g_n = g_n + 1;
-			v.push_back(*b);
+			State b = swap(x,y,2);
+			b.g_n = this->g_n + 1;
+			v.push_back(b);
 		}
 		if(op3){
-			State* c = swap(x,y,3);
-			c->g_n = g_n + 1;
-			v.push_back(*c);
+			State c = swap(x,y,3);
+			c.g_n = this->g_n + 1;
+			v.push_back(c);
 		}
 		if(op4){
-			State* d = swap(x,y,4);
-			d->g_n = g_n +1;
-			v.push_back(*d);
+			State d = swap(x,y,4);
+			d.g_n = this->g_n +1;
+			v.push_back(d);
 		}
 
 		return v;
@@ -243,11 +286,29 @@ class State{
 			cout << endl;
                 }	
 	}
-
+	
+	//overload comparison operator for priority queue
 	friend bool operator>(const State& l, const State& r){
                 return l.f_n > r.f_n;
 	}
+	
+	//overload == operator for checking explored set
+	friend bool operator==(const State &s1, const State &s2){
+		bool check = false;
 
+		for(int i = 0; i < 3; i++){ 
+        		for (int j = 0; j < 3; j++){
+				if(s1.current[i][j] == s2.current[i][j]){
+					check = true;
+				}
+				else{
+					check = false;
+				}		 
+        		} 
+    		}
+		
+		return check;
+	}
 
 };
 

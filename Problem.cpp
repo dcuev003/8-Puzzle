@@ -35,38 +35,27 @@ class Problem{
 
 		}
 
-		bool exploredCheck(State s){
-			bool check = false;
-			for(int i = 0; i < explored.size(); i++){
-				for(int j = 0; j < 3; j++){ 
-        				for (int k = 0; k < 3; k++){
-						if(s.current[j][k] == explored.at(i).current[j][k]   
-        				}		 
-    				}
-			}
-			
-		int solve(int search){
+		bool solve(int search){
 			initial_state->calcF_n(search);
 			frontier.push(*initial_state);
 			vector<State> leaves;
 
 			while(!frontier.empty()){
-				
-				if(frontier.top().checkGoal()){
-					cout << "GOAL!!!" << endl;
-					return 1;
-				}
-				explored.push_back(frontier.top());
-				leaves = frontier.top().expand();
+				State *temp = new State(frontier.top());
 				frontier.pop();
-				for(int i = 0; i < leaves.size(); i++){
-					if(leaves.
+				if(temp->checkGoal()){
+					temp->print();
+					cout << "GOAL!!!" << endl;
+					return true;
+				}
+				
+				
 								
 
 
 			}
 			cout << "FAILURE" << endl;
-			return -1;
+			return false;
 			
 		}			
 			
