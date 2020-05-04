@@ -54,7 +54,7 @@ int main(){
 	else if(choice == 2){
 		cout << "Enter your puzzle, use a zero to represent a blank" << endl;
 		cout << "Please press enter after each number entry" << endl;
-		cout << "Numbers will be filled in from left to right, top to bottwom" << endl;
+		cout << "Numbers will be filled in from left to right, top to bottom";
 		
 		int entry;
 		for (int i = 0; i < 9; i++){ 
@@ -70,9 +70,6 @@ int main(){
 
 	}
 
-	cout << "This is the goal state" << endl;
-        p->goal_state->print();
-		
 	int alg;
 	cout << "Enter 1,2, or 3 for your choice of algorithm: " << endl;
 	cout << "1 for Uniform Cost Search" << endl;
@@ -80,11 +77,9 @@ int main(){
 	cout << "3 for A* with Euclidean Distance Heuristic" << endl;
 
 	cin >> alg;
-
-	cout << alg << endl;
 	
-	if(p->solve(alg) == -1){
-		cout << "cool" << endl;
+	if(p->solve(alg)){
+		cout << "success" << endl;
 	}
 
 	return 0;

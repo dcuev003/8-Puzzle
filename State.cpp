@@ -21,11 +21,14 @@ class State{
 	bool op3;
 	bool op4;
 	
+	State(){}
 	//default constructor
-	State(int arr[]){
+	State(int arr[9]){
 		
 		g_n = 0;
 		h_n = 0;
+		f_n = 0;
+
 		op1 = true;
 		op1 = true;
 		op1 = true;
@@ -40,6 +43,7 @@ class State{
         		} 
     		}
 	}
+
 	//copy constructor
 	State(const State &s){
 		for(int i = 0; i < 3; i++){
@@ -168,8 +172,6 @@ class State{
         		for (int j = 0; j < 3; j++){
 				if(current[i][j] = 0){
 					end = true;
-					i2 = i;
-					j2 = j;
 					break;
         			} 
     			}
@@ -194,9 +196,9 @@ class State{
 
 	State swap(int x, int y, int move){
 		int temp[3][3];
-		int arr[9];
 		int hold;
-
+		int arr[9];
+		
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
 				temp[i][j] = current[i][i];  
@@ -232,12 +234,14 @@ class State{
         		} 
     		}	
 		
-		State n(arr);
+		State *n = new State(arr);
 
-		return n;			 	
+		return *n;			 	
 	}
 	
 	vector<State> expand(){
+		cout << "Expanding state" << endl;
+		this->print();
 		vector<State> v;
 		int x,y; //location of blank
 		bool end;
@@ -255,24 +259,24 @@ class State{
 
 		this->checkMoves();
 		if(op1){
-			State a = swap(x,y,1);
-			a.g_n = this->g_n + 1;
-			v.push_back(a);
+			State *a = new State(swap(x,y,1));
+			a->g_n = this->g_n + 1;
+			v.push_back(*a);
 		}
 		if(op2){
-			State b = swap(x,y,2);
-			b.g_n = this->g_n + 1;
-			v.push_back(b);
+			State *b = new State(swap(x,y,2));
+			b->g_n = this->g_n + 1;
+			v.push_back(*b);
 		}
 		if(op3){
-			State c = swap(x,y,3);
-			c.g_n = this->g_n + 1;
-			v.push_back(c);
+			State *c = new State(swap(x,y,3));
+			c->g_n = this->g_n + 1;
+			v.push_back(*c);
 		}
 		if(op4){
-			State d = swap(x,y,4);
-			d.g_n = this->g_n +1;
-			v.push_back(d);
+			State *d = new State(swap(x,y,4));
+			d->g_n = this->g_n + 1;
+			v.push_back(*d);
 		}
 
 		return v;
@@ -293,12 +297,12 @@ class State{
 	}
 	
 	//overload == operator for checking explored set
-	friend bool operator==(const State &s1, const State &s2){
+	friend bool operator!=(const State &s1, const State &s2){
 		bool check = false;
 
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
-				if(s1.current[i][j] == s2.current[i][j]){
+				if(s1.current[i][j] != s2.current[i][j]){
 					check = true;
 				}
 				else{
