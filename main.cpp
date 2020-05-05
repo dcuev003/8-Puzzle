@@ -9,28 +9,13 @@ using namespace std;
 //driver class
 int main(){
 	
-	/*vector<State> v;
-	int puzzle[] = {1,2,3,4,5,6,7,0,8};
-	//int puzzle2[] = {1,2,0,4,5,3,7,8,6};
-	
-	State *n = new State(puzzle);
-	v = n->expand();
-	State o(*n);
-	bool e;
-	cout << "--------" <<  endl;
-	for(int i = 0; i < v.size(); i++){
-		if(!(v.at(i).compare(o))){
-			cout << "good" << endl;
-		}
-	}*/
-	
 	int choice;
 	int puzzle[] = {0,1,2,4,5,3,7,8,6};
 
 	cout << "Welcome to 861225171 8 puzzle solver." << endl << "Type 1 to use a default puzzle, or 2 to enter your own puzzle" << endl;
 
 	cin >> choice;
-	Problem *p;
+	Problem *p; //puzzle object
 	if(choice == 1){
 		p = new Problem(puzzle);
 		cout << "Here is your puzzle" << endl;
@@ -39,7 +24,7 @@ int main(){
 	}
 	
 	else if(choice == 2){
-		cout << "Enter your puzzle, use a zero to represent a blank" << endl;
+		cout << "Enter your puzzle, use 0 to represent a blank" << endl;
 		cout << "Please press enter after each number entry" << endl;
 		cout << "Numbers will be filled in from left to right, top to bottom" << endl;
 		
@@ -51,8 +36,7 @@ int main(){
 
 		p = new Problem(puzzle);
 		
-		cout << "Here is your puzzle" << endl;
-		cout << endl << endl;
+		cout << "Here is your puzzle: " << endl;
 		p->initial_state->print();
 
 	}

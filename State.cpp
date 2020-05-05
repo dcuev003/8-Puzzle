@@ -78,7 +78,7 @@ class State{
 		if(this != &s){
 			for(int i = 0; i < 3; i++){ 
         			for (int j = 0; j < 3; j++){
-					current[i][j] = s.current[i][j];
+					this->current[i][j] = s.current[i][j];
 					  
         			} 
     			}
@@ -116,6 +116,7 @@ class State{
 			h_n = 0;
 		}
 		else if(search == 2){
+			h_n = 0;
 			int num = 0;
 			for(int i = 0; i < 3; i++){ 
         			for (int j = 0; j < 3; j++){
@@ -127,6 +128,7 @@ class State{
     			}
 		}
 		else{
+			this->h_n = 0;
 			double x1,x2,y1,y2,val;
 			bool check = false;
 			for(int i = 0; i < 3; i++){ 

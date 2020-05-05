@@ -25,7 +25,8 @@ class Problem{
 		priority_queue <State, vector<State>, greater<State>  > frontier;
 		
 		Problem(){}
-
+		
+		//creates Problem and instntiates initial state
 		Problem(int arr[]){
 
 			initial_state = new State(arr);
@@ -33,13 +34,14 @@ class Problem{
 
 
 		}
-
+	
+		//main algorithm that uses A*search
 		bool solve(int search){
-			vector<State> explored;
-			initial_state->calcF_n(search);
+			vector<State> explored;//vecotr to store explored nodes
+			initial_state->calcF_n(search);//calculates f_n for initial state
 			
 			frontier.push(*initial_state);
-			vector<State> leaves;
+			vector<State> leaves;//vector to keep expanded nodes
 			bool exp = false;//checking if node is in explored set
 			int max = frontier.size();
 			int expandedNodes = 0;
