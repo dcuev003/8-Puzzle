@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 	
 	int choice;
-	int puzzle[] = {0,1,2,4,5,3,7,8,6};
+	int puzzle[] = {1,0,3,4,2,6,7,5,8};
 
 	cout << "Welcome to 861225171 8 puzzle solver." << endl << "Type 1 to use a default puzzle, or 2 to enter your own puzzle" << endl;
 
