@@ -16,8 +16,6 @@ class Problem{
 	public:
 		State* initial_state;
 		
-		vector<State> explored;
-		
 		priority_queue <State, vector<State>, greater<State> > frontier;
 		
 		Problem(){}
@@ -31,12 +29,15 @@ class Problem{
 		}
 
 		bool solve(int search){
+			vector<State> explored;
 			initial_state->calcF_n(search);
+			
 			frontier.push(*initial_state);
 			vector<State> leaves;
 			bool exp = false;//checking if node is in explored set
 			int max = frontier.size();
 			int expandedNodes = 0;
+
 			while(!frontier.empty()){
 				State *temp = new State(frontier.top());
 				frontier.pop();
@@ -54,11 +55,11 @@ class Problem{
 				++expandedNodes;
 				for(int i = 0; i < leaves.size(); i++){
 					for(int j = 0; j < explored.size(); j++){
-						if(leaves.at(i) != explored.at(j)){
-							exp = true;
+						if(leaves.at(i).compare(explored.at(j))){
+							exp = false;
 						}
 						else{
-							exp = false;
+							exp = true;
 						}
 					}
 					if(exp){
@@ -67,6 +68,9 @@ class Problem{
 					}
 				
 				}
+				//clear nodes that were previously expanded
+				leaves.clear();
+				
 				if(frontier.size() > max){
 					max = frontier.size();
 				}
@@ -74,8 +78,7 @@ class Problem{
 			}
 
 			cout << "FAILURE" << endl;
-			return false;
-			
+			return false;	
 		}			
 			
 

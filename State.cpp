@@ -313,24 +313,25 @@ class State{
                 return l.f_n > r.f_n;
 	}
 	
-	//overload == operator for checking explored set
-	friend bool operator!=(const State &s1, const State &s2){
+	//return true if two states are the same
+	bool compare(State r){
 		bool check = false;
+		cout << endl;
+		r.print();
+		cout << endl;
+                for(int i = 0; i < 3; i++){
+                        for(int j = 0; j < 3; j++){
+                                if(this->current[i][j] == r.current[i][j]){
+                                        check = true;
+                                }
+                                else{
+                                        check = false;
+                                }
+                        }
+                }
 
-		for(int i = 0; i < 3; i++){ 
-        		for (int j = 0; j < 3; j++){
-				if(s1.current[i][j] != s2.current[i][j]){
-					check = true;
-				}
-				else{
-					check = false;
-				}		 
-        		} 
-    		}
-		
-		return check;
+                return check;
 	}
-
 };
 
 
