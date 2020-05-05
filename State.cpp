@@ -24,8 +24,10 @@ class State{
 	State(){}
 
 	//default constructor
-	State(int arr[9]){
+	State(int arr[]){
 		
+		int arr2[9];
+
 		g_n = 0;
 		h_n = 0;
 		f_n = 0;
@@ -36,10 +38,15 @@ class State{
 		op4 = true;
 		
 		int num = 0;
-
+		
+		//copy array
+		for(int i = 0; i < 9; i++){
+			arr2[i] = arr[i];
+		}
+		
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
-				current[i][j] = arr[num];
+				current[i][j] = arr2[num];
 				num++;  
         		} 
     		}
@@ -168,10 +175,11 @@ class State{
 	void checkMoves(){
 		int i2;
 		int j2;
+		
 		bool end = false;
 		for (int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
-				if(current[i][j] = 0){
+				if(current[i][j] == 0){
 					i2 = i;
 					j2 = j;
 					end = true;
@@ -184,19 +192,19 @@ class State{
 		}
 
 		if(i2 == 0){
-			op1 = false;
+			this->op1 = false;
 		}
 		if(i2 == 2){
-			op2 = false;
+			this->op2 = false;
 		}
 		if(j2 == 0){
-			op3 = false;
+			this->op3 = false;
 		}
 		if(j2 == 2){
-			op4 = false;
+			this->op4 = false;
 		}
 	}
-
+	
 	State swap(int x, int y, int move){
 		int temp[3][3];
 		int hold;
@@ -261,26 +269,25 @@ class State{
 	 	}
 		this->checkMoves();
 		
-		if(this->op1){
-			cout << "1" << endl;
+		if(this->op1 == true){
 			State *a = new State(swap(x,y,1));
 			a->g_n = this->g_n + 1;
 			v.push_back(*a);
 		}
-		if(this->op2){
-			cout << "2" << endl;
+
+		if(this->op2 == true){
 			State *b = new State(swap(x,y,2));
 			b->g_n = this->g_n + 1;
 			v.push_back(*b);
 		}
-		if(op3){
-			cout << "3" << endl;
+
+		if(this->op3 == true){
 			State *c = new State(swap(x,y,3));
 			c->g_n = this->g_n + 1;
 			v.push_back(*c);
 		}
-		if(op4){
-			cout << "4" << endl;
+
+		if(this->op4 == true){
 			State *d = new State(swap(x,y,4));
 			d->g_n = this->g_n + 1;
 			v.push_back(*d);
