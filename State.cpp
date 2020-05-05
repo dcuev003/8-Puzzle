@@ -315,12 +315,12 @@ class State{
 	
 	//return true if two states are the same
 	bool compare(const State &r){
-		cout << endl;
+		/*cout << endl;
 		r.print();
 		cout << endl;
 
 		this->print();
-		cout << endl;
+		cout << endl;*/
                 for(int i = 0; i < 3; i++){
                         for(int j = 0; j < 3; j++){
                                 if(this->current[i][j] != r.current[i][j]){
