@@ -16,10 +16,10 @@ class State{
 	double h_n;
 	double f_n;
 		
-	bool op1;
-	bool op2;
-	bool op3;
-	bool op4;
+	bool op1; //move up
+	bool op2; //move down
+	bool op3; //move left
+	bool op4; //move right
 	
 	State(){}
 	//default constructor
@@ -171,6 +171,8 @@ class State{
 		for (int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
 				if(current[i][j] = 0){
+					i2 = i;
+					j2 = j;
 					end = true;
 					break;
         			} 
@@ -198,7 +200,7 @@ class State{
 		int temp[3][3];
 		int hold;
 		int arr[9];
-		
+		cout << "goes into swap" << endl;
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
 				temp[i][j] = current[i][i];  
@@ -241,10 +243,10 @@ class State{
 	
 	vector<State> expand(){
 		cout << "Expanding state" << endl;
-		this->print();
 		vector<State> v;
 		int x,y; //location of blank
-		bool end;
+		bool end = false;
+		
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
 				if(current[i][j] == 0){
@@ -258,6 +260,7 @@ class State{
 	 	}
 
 		this->checkMoves();
+		
 		if(op1){
 			State *a = new State(swap(x,y,1));
 			a->g_n = this->g_n + 1;

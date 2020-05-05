@@ -50,7 +50,7 @@ class Problem{
 					return true;
 				}
 				explored.push_back(*temp);
-				cout << "The best state to expand with g(n) = " << temp->g_n << " and h(n) = " << temp->f_n << " is..." << endl;
+				cout << "The best state to expand with g(n) = " << temp->g_n << " and h(n) = " << temp->h_n << " is..." << endl;
 				temp->print();
 				leaves = temp->expand();
 				++expandedNodes;

@@ -10,33 +10,7 @@ int main(){
 
 	
 
-	/*int arr[] = {8,7,6,5,4,3,2,1,0};
-	int arr2[] = {1,3,2,4,5,6,7,8,0};
-	int arr3[] = {1,2,4,3,5,6,7,8,0}; 
-	State n(arr);
-	State m(arr2);
-	State o(arr3);
-	
-	n.calcF_n(3);
-	m.calcF_n(3);
-	o.calcF_n(3);
-
-	cout << n.f_n << endl;
-	cout << m.f_n << endl;
-	cout << o.f_n << endl << endl;
-
-	priority_queue <State, vector<State>, greater<State> > frontier;
-
-	frontier.push(o);
-	frontier.push(n);
-	frontier.push(m);
-
-	cout << frontier.top().f_n << endl;
-	frontier.pop();
-	cout << frontier.top().f_n << endl;	
-	frontier.pop();
-	cout << frontier.top().f_n << endl;*/
-
+	int arr[] = {1,3,2,4,5,6,7,8,0}
 	int choice;
 	int puzzle[9] = {1,3,0,2,4,7,5,6,8};
 
