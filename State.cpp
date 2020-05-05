@@ -22,6 +22,7 @@ class State{
 	bool op4; //move right
 	
 	State(){}
+
 	//default constructor
 	State(int arr[9]){
 		
@@ -30,9 +31,9 @@ class State{
 		f_n = 0;
 
 		op1 = true;
-		op1 = true;
-		op1 = true;
-		op1 = true;
+		op2 = true;
+		op3 = true;
+		op4 = true;
 		
 		int num = 0;
 
@@ -182,16 +183,16 @@ class State{
 			}
 		}
 
-		if(i2 = 0){
+		if(i2 == 0){
 			op1 = false;
 		}
-		if(i2 = 2){
+		if(i2 == 2){
 			op2 = false;
 		}
-		if(j2 = 0){
+		if(j2 == 0){
 			op3 = false;
 		}
-		if(j2 = 2){
+		if(j2 == 2){
 			op4 = false;
 		}
 	}
@@ -200,7 +201,7 @@ class State{
 		int temp[3][3];
 		int hold;
 		int arr[9];
-		cout << "goes into swap" << endl;
+		//cout << "goes into swap" << endl;
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
 				temp[i][j] = current[i][i];  
@@ -258,25 +259,28 @@ class State{
         		}
 			if(end){break;}
 	 	}
-
 		this->checkMoves();
 		
-		if(op1){
+		if(this->op1){
+			cout << "1" << endl;
 			State *a = new State(swap(x,y,1));
 			a->g_n = this->g_n + 1;
 			v.push_back(*a);
 		}
-		if(op2){
+		if(this->op2){
+			cout << "2" << endl;
 			State *b = new State(swap(x,y,2));
 			b->g_n = this->g_n + 1;
 			v.push_back(*b);
 		}
 		if(op3){
+			cout << "3" << endl;
 			State *c = new State(swap(x,y,3));
 			c->g_n = this->g_n + 1;
 			v.push_back(*c);
 		}
 		if(op4){
+			cout << "4" << endl;
 			State *d = new State(swap(x,y,4));
 			d->g_n = this->g_n + 1;
 			v.push_back(*d);

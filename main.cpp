@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include "Problem.cpp"
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -9,8 +10,14 @@ using namespace std;
 int main(){
 
 	
+	int arr[] = {1,2,3,4,5,6,7,0,8};
+	vector<State> v; 
+	State *temp = new State(arr);
 
-	int arr[] = {1,3,2,4,5,6,7,8,0}
+	v = temp->expand();
+	cout << v.size() << endl;
+	v.at(1).print();
+	/*int arr[] = {1,3,2,4,5,6,7,8,0}
 	int choice;
 	int puzzle[9] = {1,3,0,2,4,7,5,6,8};
 
@@ -54,7 +61,7 @@ int main(){
 	
 	if(p->solve(alg)){
 		cout << "success" << endl;
-	}
+	}*/
 
 	return 0;
 
