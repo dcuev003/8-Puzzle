@@ -254,7 +254,7 @@ class State{
 	}
 	
 	vector<State> expand(){
-		cout << "Expanding state" << endl;
+		cout << "Expanding state" << endl << endl;
 		vector<State> v;
 		int x,y; //location of blank
 		bool end = false;
@@ -315,12 +315,7 @@ class State{
 	
 	//return true if two states are the same
 	bool compare(const State &r){
-		/*cout << endl;
-		r.print();
-		cout << endl;
 
-		this->print();
-		cout << endl;*/
                 for(int i = 0; i < 3; i++){
                         for(int j = 0; j < 3; j++){
                                 if(this->current[i][j] != r.current[i][j]){

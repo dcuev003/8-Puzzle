@@ -25,9 +25,9 @@ int main(){
 	}*/
 	
 	int choice;
-	int puzzle[] = {1,2,3,4,5,6,7,0,8};
+	int puzzle[] = {0,1,2,4,5,3,7,8,6};
 
-	cout << "Welcome to 861225171 8 puzzle solver." << endl << "Type 1 to use a default puzzle, or 2 to enter your own puzzle" << endl << endl;
+	cout << "Welcome to 861225171 8 puzzle solver." << endl << "Type 1 to use a default puzzle, or 2 to enter your own puzzle" << endl;
 
 	cin >> choice;
 	Problem *p;

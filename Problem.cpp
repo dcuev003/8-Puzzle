@@ -11,16 +11,22 @@
 #include <queue>
 using namespace std;
 
+/*struct CompareStates{
+	bool operator()(State const& l, State const& r){
+		return l.f_n > r.f_n;
+	}
+};*/
+
 class Problem{
 
 	public:
 		State* initial_state;
 		
-		priority_queue <State, vector<State>, greater<State> > frontier;
+		priority_queue <State, vector<State>, greater<State>  > frontier;
 		
 		Problem(){}
 
-		Problem(int arr[9]){
+		Problem(int arr[]){
 
 			initial_state = new State(arr);
 			
@@ -53,6 +59,7 @@ class Problem{
 				temp->print();
 				leaves = temp->expand();
 				++expandedNodes;
+				delete temp;
 				for(int i = 0; i < leaves.size(); i++){
 					for(int j = 0; j < explored.size(); j++){
 						if(leaves.at(i).compare(explored.at(j))){
