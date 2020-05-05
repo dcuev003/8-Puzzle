@@ -14,21 +14,14 @@ int main(){
 	//int puzzle2[] = {1,2,0,4,5,3,7,8,6};
 	
 	State *n = new State(puzzle);
-	State o(*n);
 	v = n->expand();
-	o.print();
-	cout << endl;
+	State o(*n);
+	bool e;
+	cout << "--------" <<  endl;
 	for(int i = 0; i < v.size(); i++){
-		v.at(i).print();
-		v.at(i).calcF_n(3);
-		//cout << v.at(i).f_n << endl;
-		if(v.at(i).compare(o)){
-			cout << "bad" << endl;
-		}
-		else if(!(v.at(i).compare(o))){
+		if(!(v.at(i).compare(o))){
 			cout << "good" << endl;
 		}
-		cout << endl;
 	}
 	
 	/*int choice;

@@ -299,7 +299,7 @@ class State{
 		return v;
 	}		
 
-	void print(){
+	void print() const{
 		for(int i = 0; i < 3; i++){
                 	for (int j = 0; j < 3; j++){
                         	cout << current[i][j] << " ";
@@ -314,23 +314,21 @@ class State{
 	}
 	
 	//return true if two states are the same
-	bool compare(State r){
-		bool check = false;
+	bool compare(const State &r){
 		cout << endl;
 		r.print();
 		cout << endl;
+
+		this->print();
+		cout << endl;
                 for(int i = 0; i < 3; i++){
                         for(int j = 0; j < 3; j++){
-                                if(this->current[i][j] == r.current[i][j]){
-                                        check = true;
-                                }
-                                else{
-                                        check = false;
+                                if(this->current[i][j] != r.current[i][j]){
+                                        return false;
                                 }
                         }
                 }
-
-                return check;
+		return true;
 	}
 };
 
