@@ -20,8 +20,6 @@ class Problem{
 		
 		priority_queue <State, vector<State>, greater<State> > frontier;
 		
-		int operators[4];//operators are move up, down, left, right respectiely
-
 		Problem(){}
 
 		Problem(int arr[9]){
@@ -36,7 +34,7 @@ class Problem{
 			initial_state->calcF_n(search);
 			frontier.push(*initial_state);
 			vector<State> leaves;
-			bool exp = false;
+			bool exp = false;//checking if node is in explored set
 			int max = frontier.size();
 			int expandedNodes = 0;
 			while(!frontier.empty()){

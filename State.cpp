@@ -210,9 +210,10 @@ class State{
 		int hold;
 		int arr[9];
 		//cout << "goes into swap" << endl;
+		//copy puzzle
 		for(int i = 0; i < 3; i++){ 
         		for (int j = 0; j < 3; j++){
-				temp[i][j] = current[i][i];  
+				temp[i][j] = current[i][j];  
         		} 
     		}
 
@@ -221,11 +222,13 @@ class State{
 			temp[x-1][y] = 0;
 			temp[x][y] = hold;
 		}
+
 		else if(move == 2){
                         hold = temp[x+1][y];
                         temp[x+1][y] = 0;
                         temp[x][y] = hold;
                 }
+
 		else if(move == 3){
                         hold = temp[x][y-1];
                         temp[x][y-1] = 0;
